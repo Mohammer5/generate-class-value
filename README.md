@@ -1,6 +1,6 @@
 # Generate Class Value
 
-This package purpose is to reduce the complexity of creating
+This package purpose's is to reduce the complexity of creating
 dynamic class names. It's been used in a react environment so far
 but works in any other environment as well.
 
@@ -21,8 +21,8 @@ interface Props {
 
 const conditions: Conditions<Props> = {
   'box__header': true,
-	'box__header--green': ({ color }) => color === 'green',
-	'box__header--black': ({ color }) => color === 'black',
+  'box__header--green': ({ color }) => color === 'green',
+  'box__header--black': ({ color }) => color === 'black',
 };
 
 // Reduces the cognitive load when reading the jsx code
@@ -31,6 +31,6 @@ const lazyClassValue = partial(generateClassValue, conditions);
 export const Box: SCF<Props> = props => (
   <div className={lazyClassValue(props)}>
     {/* ... */}
-	</div>
+  </div>
 );
 ```

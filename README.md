@@ -28,6 +28,13 @@ const conditions: Conditions<Props> = {
 // Reduces the cognitive load when reading the jsx code
 const lazyClassValue = partial(generateClassValue, conditions);
 
+/**
+ * <Box color="green" />
+ *
+ * will produce:
+ *
+ * <div class="box__header box__header--green"></div>
+ **/
 export const Box: SCF<Props> = props => (
   <div className={lazyClassValue(props)}>
     {/* ... */}

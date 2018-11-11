@@ -1,15 +1,19 @@
-import { reduce } from 'lodash/fp';
-import { GenerateClassValue } from '../index.d';
-import { executeIfFunction } from './executeIfFunction';
+import { curry } from 'lodash/fp';
+import { fillArrayConditionally } from './fillArrayConditionally';
 
-const uncappedReduce = reduce.convert({ cap: false });
+type ConditionFunction<T> = (valueContainer: T) => boolean;
 
-export const generateClassValue: GenerateClassValue =
-	<T>(conditions, props) => uncappedReduce(
-		(classNames, currentCondition, currentClassName) =>
-		  executeIfFunction(currentCondition, props)
-		    ? [ ...classNames, currentClassName ]
-		    : classNames,
-		[],
-		conditions,
-	).join(' ');
+export interface Conditions<T> {
+    [className: string]: boolean | ConditionFunction<T>;
+}
+
+export type GenerateClassValue = <T>(conditions: Conditions<T>) =>
+  (valueContainer: T) => string;
+
+export const generateClassValue: GenerateClassValue
+  = conditions =>
+  	valueContainer => fillArrayConditionally(
+			conditions,
+			valueContainer
+		)
+			.join(' ');

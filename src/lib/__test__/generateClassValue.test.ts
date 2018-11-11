@@ -8,7 +8,7 @@ describe('generateClassValue', () => {
 			'block__element--bar': (props) => props === 'bar',
 		};
 
-		expect(generateClassValue(conditions, 'baz')).toBe('');
+		expect(generateClassValue(conditions)('baz')).toBe('');
 	});
 
 	it('should return one class name when one condition is met', () => {
@@ -17,7 +17,7 @@ describe('generateClassValue', () => {
 			'block__element--bar': (props) => props === 'bar',
 		};
 
-		expect(generateClassValue(conditions, 'foo')).toBe('block__element--foo');
+		expect(generateClassValue(conditions)('foo')).toBe('block__element--foo');
 	});
 
 	it('should return the class names seperated by spaced when multiple conditions are met', () => {
@@ -36,6 +36,6 @@ describe('generateClassValue', () => {
 			bar: true,
 		};
 
-		expect(generateClassValue(conditions, props)).toBe('block__element--foo block__element--bar');
+		expect(generateClassValue(conditions)(props)).toBe('block__element--foo block__element--bar');
 	});
 });

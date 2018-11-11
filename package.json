@@ -9,6 +9,10 @@
   },
   "author": "Jan-Gerke Salomon",
   "license": "GPL-3.0-or-later",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Mohammer5/generate-class-value.git"
+	},
   "jest": {
     "roots": [
       "src"

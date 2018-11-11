@@ -26,7 +26,7 @@ const conditions: Conditions<Props> = {
 };
 
 // Reduces the cognitive load when reading the jsx code
-const lazyClassValue = partial(generateClassValue, conditions);
+const lazyClassValue = generateClassValue(conditions);
 
 /**
  * <Box color="green" />
